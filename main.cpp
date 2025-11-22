@@ -45,11 +45,12 @@ public:
         while (!dq.empty()) {
             int node = dq.front();
             dq.pop_front();
-            cout << node << " ";
+            cout << "Computer " << node << " checking new connections:" << endl;
 
             for (auto &neighbor : adjList[node]) {
                 int next = neighbor.first;
                 if (!visited[next]) {
+                    cout << " --> Computer " << next << ", Latency: " << adjList[node][i].second << endl;
                     visited[next] = true;
                     dq.push_back(next);
                 }
