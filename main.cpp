@@ -40,7 +40,8 @@ public:
         visited[0] = true;
         dq.push_back(0);
 
-        cout << "Layer-by-Layer Connectivity Check (BFS) to Computer 0:\n";
+        cout << "\nLayer-by-Layer Connectivity Check (BFS) to Computer 0:\n";
+        cout << "Purpose: Check connection of each computer to Computer 0 based on complexity of connection(number of computers used to support connection)" << endl;
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -50,7 +51,7 @@ public:
             for (auto &neighbor : adjList[node]) {
                 int next = neighbor.first;
                 if (!visited[next]) {
-                    cout << " --> Computer " << next << ", Latency: " << adjList[node][i].second << endl;
+                    cout << " --> Computer " << next << ", Latency: " << neighbor.second << endl;
                     visited[next] = true;
                     dq.push_back(next);
                 }
@@ -65,7 +66,8 @@ public:
 
         dq.push_back(0);
 
-        cout << "Branch-by-branch Connectivity Check (DFS) to Computer 0: \n";
+        cout << "\nBranch-by-branch Connectivity Check (DFS) to Computer 0: \n";
+        cout << "Purpose: tereaft" << endl;
 
         while (!dq.empty()) {
             int node = dq.front();
