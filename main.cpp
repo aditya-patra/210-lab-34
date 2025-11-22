@@ -40,7 +40,7 @@ public:
         visited[0] = true;
         dq.push_back(0);
 
-        cout << "BFS starting at 0: \n";
+        cout << "BFS starting at 0:\n";
 
         while (!dq.empty()) {
             int node = dq.front();
