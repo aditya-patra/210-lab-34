@@ -88,11 +88,13 @@ public:
 
     // Print the graph's adjacency list
     void printGraph() {
-        cout << "Computer Network Grid: " << endl;
+        cout << "Computer Network Grid: " << endl << "====================================" << endl;
         for (int i = 0; i < adjList.size(); i++) {
-            cout << i << " --> ";
-            for (Pair v : adjList[i])
-                cout << "(" << v.first << ", " << v.second << ") ";
+            cout << "Computer " << i << " connections: " << endl;
+            for (Pair v : adjList[i]) {
+                cout << " --> ";
+                cout << "Computer " << v.first << ", Latency: " << v.second << endl;
+            }
             cout << endl;
         }
     }
