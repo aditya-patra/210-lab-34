@@ -72,13 +72,13 @@ public:
 
             if (!visited[node]) {
                 visited[node] = true;
-                cout << "Computer " << node << " New Connections:" << endl;
+                cout << "Computer " << node << " checking new connections:" << endl;
 
                 // push neighbors in reverse to maintain natural order
                 for (int i = 0; i < adjList[node].size(); i++) {
                     int next = adjList[node][i].first;
                     if (!visited[next]) {
-                        cout << " --> Computer " << next << endl;
+                        cout << " --> Computer " << next << ", Latency: " << adjList[node][i].second << endl;
                         dq.push_front(next);
                     }
                 }
