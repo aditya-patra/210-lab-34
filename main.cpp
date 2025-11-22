@@ -58,13 +58,13 @@ public:
         cout << endl;
     }
 
-    void DFS(int start) {
+    void DFS() {
         vector<bool> visited(SIZE, false);
         deque<int> dq;
 
-        dq.push_back(start);
+        dq.push_back(0);
 
-        cout << "\nDFS starting at " << start << ": ";
+        cout << "\nDFS starting at 0: ";
 
         while (!dq.empty()) {
             int node = dq.back();
@@ -110,7 +110,7 @@ int main() {
 
     // Prints adjacency list representation of graph
     graph.printGraph();
-    graph.DFS(0);
+    graph.DFS();
 
     return 0;
 }
