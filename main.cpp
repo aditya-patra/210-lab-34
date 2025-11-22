@@ -89,17 +89,17 @@ public:
         }
         cout << endl;
     }
-    
-    void shortestPath(int start) {
+
+    void shortestPath() {
         vector<int> dist(SIZE, INT_MAX);
         vector<bool> visited(SIZE, false);
 
-        dist[start] = 0;
+        dist[0] = 0;
 
         // A deque used just to hold nodes we haven't processed yet
         // (not acting as a priority queue)
         deque<int> dq;
-        dq.push_back(start);
+        dq.push_back(0);
 
         while (!dq.empty()) {
             // -----------------------------------------------------
@@ -140,7 +140,7 @@ public:
         // ---------------------------------------------------------
         // Print results
         // ---------------------------------------------------------
-        cout << "\nShortest path distances from computer " << start << ":\n";
+        cout << "\nShortest path distances from computer 0:\n";
         for (int i = 0; i < SIZE; i++) {
             cout << "To " << i << " = ";
             if (dist[i] == INT_MAX)
@@ -181,6 +181,7 @@ int main() {
     //driver program
     graph.DFS();
     graph.BFS();
+    graph.shortestPath();
 
     return 0;
 }
