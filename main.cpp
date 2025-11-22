@@ -40,7 +40,7 @@ public:
         visited[0] = true;
         dq.push_back(0);
 
-        cout << "Layer-by-Layer Connectivity Check (BFS) starting at Computer 0:\n";
+        cout << "Layer-by-Layer Connectivity Check (BFS) to Computer 0:\n";
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -64,7 +64,7 @@ public:
 
         dq.push_back(0);
 
-        cout << "Branch-by-branch Connectivity Check (DFS) starting at Computer 0: \n";
+        cout << "Branch-by-branch Connectivity Check (DFS) to Computer 0: \n";
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -72,12 +72,13 @@ public:
 
             if (!visited[node]) {
                 visited[node] = true;
-                cout << node << " ";
+                cout << "Computer " << node << " New Connections:" << endl;
 
                 // push neighbors in reverse to maintain natural order
                 for (int i = 0; i < adjList[node].size(); i++) {
                     int next = adjList[node][i].first;
                     if (!visited[next]) {
+                        cout << " --> Computer " << next << endl;
                         dq.push_front(next);
                     }
                 }
