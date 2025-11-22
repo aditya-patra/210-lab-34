@@ -67,7 +67,7 @@ public:
         dq.push_back(0);
 
         cout << "\nBranch-by-branch Connectivity Check (DFS) to Computer 0: \n";
-        cout << "Purpose: tereaft" << endl;
+        cout << "Purpose: Find isolated lines of computers or breaks in overall network (every computer is supposed to be connected, but starting list is purposely missing connections)" << endl;
 
         while (!dq.empty()) {
             int node = dq.front();
