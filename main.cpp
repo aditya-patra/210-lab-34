@@ -41,7 +41,7 @@ public:
         dq.push_back(0);
 
         cout << "\nLayer-by-Layer Connectivity Check (BFS) to Computer 0:\n";
-        cout << "Purpose: Check connection of each computer to Computer 0 based on complexity of connection(number of computers used to support connection)" << endl;
+        cout << "Purpose: estimate complexity of each computer's connection to Computer 0(how many computers serve as intermediates in connection)" << endl;
 
         while (!dq.empty()) {
             int node = dq.front();
