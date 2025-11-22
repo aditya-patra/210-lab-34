@@ -72,14 +72,16 @@ public:
 
             if (!visited[node]) {
                 visited[node] = true;
-                cout << node << " ";
+                cout << node << " " << endl;
 
                 // push neighbors in reverse to maintain natural order
                 for (int i = adjList[node].size() - 1; i >= 0; i--) {
                     int next = adjList[node][i].first;
                     if (!visited[next]) {
+                        cout << next << " ";
                         dq.push_back(next);
                     }
+                    cout << endl;
                 }
             }
         }
