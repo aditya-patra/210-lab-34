@@ -64,7 +64,7 @@ public:
 
         dq.push_back(0);
 
-        cout << "\nDFS starting at 0: ";
+        cout << "\nDFS starting at 0: \n";
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -72,17 +72,15 @@ public:
 
             if (!visited[node]) {
                 visited[node] = true;
-                cout << node << " node" << endl;
+                cout << node << " ";
 
                 // push neighbors in reverse to maintain natural order
                 for (int i = 0; i < adjList[node].size(); i++) {
                     int next = adjList[node][i].first;
                     if (!visited[next]) {
-                        cout << next << " ";
                         dq.push_front(next);
                     }
                 }
-                cout << endl;
             }
         }
         cout << endl;
