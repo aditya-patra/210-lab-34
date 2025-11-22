@@ -40,7 +40,7 @@ public:
         visited[0] = true;
         dq.push_back(0);
 
-        cout << "BFS starting at 0:\n";
+        cout << "Layer-by-Layer Connectivity Check (BFS) starting at Computer 0:\n";
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -64,7 +64,7 @@ public:
 
         dq.push_back(0);
 
-        cout << "DFS starting at 0: \n";
+        cout << "Branch-by-branch Connectivity Check (DFS) starting at Computer 0: \n";
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -95,7 +95,9 @@ public:
                 cout << " --> ";
                 cout << "Computer " << v.first << ", Latency: " << v.second << endl;
             }
-            cout << endl;
+            if (adjList[i].size() == 0) {
+                cout << "None" << endl;
+            }
         }
     }
 };
