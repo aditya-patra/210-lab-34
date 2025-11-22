@@ -33,14 +33,14 @@ public:
             adjList[dest].push_back(make_pair(src, weight));
         }
     }
-    void BFS(int start) {
+    void BFS() {
         vector<bool> visited(SIZE, false);
         deque<int> dq;
 
-        visited[start] = true;
-        dq.push_back(start);
+        visited[0] = true;
+        dq.push_back(0);
 
-        cout << "\nBFS starting at " << start << ": ";
+        cout << "BFS starting at 0: ";
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -64,7 +64,7 @@ public:
 
         dq.push_back(0);
 
-        cout << "\nDFS starting at 0: \n";
+        cout << "DFS starting at 0: \n";
 
         while (!dq.empty()) {
             int node = dq.front();
@@ -110,7 +110,9 @@ int main() {
 
     // Prints adjacency list representation of graph
     graph.printGraph();
+    //driver program
     graph.DFS();
+    graph.BFS();
 
     return 0;
 }
