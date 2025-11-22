@@ -68,7 +68,7 @@ public:
 
         while (!dq.empty()) {
             int node = dq.front();
-            dq.pop_back();
+            dq.pop_front();
 
             if (!visited[node]) {
                 visited[node] = true;
