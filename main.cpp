@@ -89,6 +89,66 @@ public:
         }
         cout << endl;
     }
+    
+    void shortestPath(int start) {
+        vector<int> dist(SIZE, INT_MAX);
+        vector<bool> visited(SIZE, false);
+
+        dist[start] = 0;
+
+        // A deque used just to hold nodes we haven't processed yet
+        // (not acting as a priority queue)
+        deque<int> dq;
+        dq.push_back(start);
+
+        while (!dq.empty()) {
+            // -----------------------------------------------------
+            // Find the unvisited node with the smallest distance
+            // -----------------------------------------------------
+            int smallestDist = INT_MAX;
+            int smallestNode = -1;
+
+            for (int i = 0; i < SIZE; i++) {
+                if (!visited[i] && dist[i] < smallestDist) {
+                    smallestDist = dist[i];
+                    smallestNode = i;
+                }
+            }
+
+            if (smallestNode == -1)
+                break; // all reachable nodes processed
+
+            dq.pop_front(); // we "process" this node
+            visited[smallestNode] = true;
+
+            // -----------------------------------------------------
+            // Relax edges
+            // -----------------------------------------------------
+            for (int i = 0; i < adjList[smallestNode].size(); i++) {
+                int next = adjList[smallestNode][i].first;
+                int weight = adjList[smallestNode][i].second;
+
+                if (!visited[next] &&
+                    dist[smallestNode] + weight < dist[next]) {
+
+                    dist[next] = dist[smallestNode] + weight;
+                    dq.push_back(next);
+                }
+            }
+        }
+
+        // ---------------------------------------------------------
+        // Print results
+        // ---------------------------------------------------------
+        cout << "\nShortest path distances from computer " << start << ":\n";
+        for (int i = 0; i < SIZE; i++) {
+            cout << "To " << i << " = ";
+            if (dist[i] == INT_MAX)
+                cout << "Unreachable\n";
+            else
+                cout << dist[i] << "\n";
+        }
+    }
 
     // Print the graph's adjacency list
     void printGraph() {
