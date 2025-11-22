@@ -67,7 +67,7 @@ public:
         cout << "\nDFS starting at 0: ";
 
         while (!dq.empty()) {
-            int node = dq.back();
+            int node = dq.front();
             dq.pop_back();
 
             if (!visited[node]) {
