@@ -110,6 +110,7 @@ int main() {
 
     // Prints adjacency list representation of graph
     graph.printGraph();
+    graph.DFS(0);
 
     return 0;
 }
