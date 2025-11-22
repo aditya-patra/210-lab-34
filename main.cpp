@@ -3,7 +3,7 @@
 #include <deque>
 using namespace std;
 
-const int SIZE = 7;
+const int SIZE = 13;
 
 struct Edge {
     int src, dest, weight;
@@ -102,7 +102,7 @@ int main() {
     // Creates a vector of graph edges/weights
     vector<Edge> edges = {
         // (x, y, w) —> edge from x to y having weight w
-        {0,1,12},{0,2,8},{0,3,21},{2,3,6},{2,4,4}, {2, 7, 13}, {4, 8, 3}, {3, 9, 14}, {1, 10, 19}
+        {0,1,12},{0,2,8},{0,3,21},{2,3,6},{2,4,4}, {2, 7, 13}, {4, 8, 3}, {3, 9, 14}, {1, 10, 19}, {0, 11, 2}, {11, 12, 6}, {12, 3, 6}, {8, 9, 23}, {3, 7, 1}, {7, 10, 3}, {9, 0, 12}
     };
 
     // Creates graph
