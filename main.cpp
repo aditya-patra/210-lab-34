@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <deque>
 using namespace std;
 
 const int SIZE = 7;
@@ -31,6 +32,58 @@ public:
             // for an undirected graph, add an edge from dest to src also
             adjList[dest].push_back(make_pair(src, weight));
         }
+    }
+    void BFS(int start) {
+        vector<bool> visited(SIZE, false);
+        deque<int> dq;
+
+        visited[start] = true;
+        dq.push_back(start);
+
+        cout << "\nBFS starting at " << start << ": ";
+
+        while (!dq.empty()) {
+            int node = dq.front();
+            dq.pop_front();
+            cout << node << " ";
+
+            for (auto &neighbor : adjList[node]) {
+                int next = neighbor.first;
+                if (!visited[next]) {
+                    visited[next] = true;
+                    dq.push_back(next);
+                }
+            }
+        }
+        cout << endl;
+    }
+
+    void DFS(int start) {
+        vector<bool> visited(SIZE, false);
+        deque<int> dq;
+
+        dq.push_back(start);
+
+        cout << "\nDFS starting at " << start << ": ";
+
+        while (!dq.empty()) {
+            int node = dq.back();
+            dq.pop_back();
+
+            if (!visited[node]) {
+                visited[node] = true;
+                cout << node << " ";
+
+                // push neighbors in reverse to maintain natural order
+                for (int i = adjList[node].size() - 1; i >= 0; i--) {
+                    int next = adjList[node][i].first;
+                    if (!visited[next]) {
+                        dq.push_back(next);
+                    }
+                }
+            }
+        }
+        cout << endl;
     }
 
     // Print the graph's adjacency list
