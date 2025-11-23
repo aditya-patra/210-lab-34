@@ -137,9 +137,6 @@ public:
             }
         }
 
-        // ---------------------------------------------------------
-        // Print results
-        // ---------------------------------------------------------
         cout << "\nShortest path distances from computer 0:\n";
         for (int i = 0; i < SIZE; i++) {
             cout << " 0 -> " << i << ": ";
@@ -148,6 +145,64 @@ public:
             else
                 cout << dist[i] << "\n";
         }
+    }
+    
+    void minimumSpanningTree(int start) {
+        vector<bool> inMST(SIZE, false);
+        vector<int> key(SIZE, INT_MAX);
+        vector<int> parent(SIZE, -1);
+
+        key[start] = 0;
+
+        for (int count = 0; count < SIZE - 1; count++) {
+
+            // -------------------------------------------------
+            // Pick the unvisited node with the smallest key
+            // -------------------------------------------------
+            int minKey = INT_MAX;
+            int u = -1;
+
+            for (int i = 0; i < SIZE; i++) {
+                if (!inMST[i] && key[i] < minKey) {
+                    minKey = key[i];
+                    u = i;
+                }
+            }
+
+            if (u == -1)
+                break; // no more nodes
+
+            inMST[u] = true;
+
+            // -------------------------------------------------
+            // Update neighbors
+            // -------------------------------------------------
+            for (int i = 0; i < adjList[u].size(); i++) {
+                int v = adjList[u][i].first;
+                int weight = adjList[u][i].second;
+
+                if (!inMST[v] && weight < key[v]) {
+                    key[v] = weight;
+                    parent[v] = u;
+                }
+            }
+        }
+
+        // -----------------------------------------------------
+        // Print the MST edges and total cost
+        // -----------------------------------------------------
+        int totalWeight = 0;
+        cout << "\nMinimum Spanning Tree starting at " << start << ":\n";
+
+        for (int i = 0; i < SIZE; i++) {
+            if (parent[i] != -1) {
+                cout << parent[i] << " -- " << i
+                     << "   (weight = " << key[i] << ")\n";
+                totalWeight += key[i];
+            }
+        }
+
+        cout << "Total MST Weight = " << totalWeight << "\n";
     }
 
     // Print the graph's adjacency list
