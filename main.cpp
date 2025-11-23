@@ -144,7 +144,7 @@ public:
         for (int i = 0; i < SIZE; i++) {
             cout << " 0 -> " << i << ": ";
             if (dist[i] == INT_MAX)
-                cout << "Deleted nodes as per Step 2\n";
+                cout << "Deleted node " << i << " as per Step 2\n";
             else
                 cout << dist[i] << "\n";
         }
