@@ -249,7 +249,7 @@ int main() {
     // menu
     int choice = -1;
     while (choice != 6) {
-        cout << "[1] Display water distribution network\n[2] Check contaminant spread (BFS)\n[3] Plan inspection route  (DFS)\n[4] Calculate shortest paths\n[5] Find Minimum Spanning Tree\n[6] Exit " << endl;
+        cout << "[1] Display computer network\n[2] Estimate complexity of accessing each computer (BFS)\n[3] Find branches of isolated computer networks (DFS)\n[4] Calculate shortest path to computers\n[5] Find Minimum Spanning Tree\n[6] Exit " << endl;
     }
 
     return 0;
