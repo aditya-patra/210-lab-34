@@ -144,7 +144,7 @@ public:
         for (int i = 0; i < SIZE; i++) {
             cout << "To " << i << " = ";
             if (dist[i] == INT_MAX)
-                cout << "Unreachable\n";
+                cout << "Deleted nodes as per Step 2\n";
             else
                 cout << dist[i] << "\n";
         }
