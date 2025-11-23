@@ -246,5 +246,11 @@ int main() {
     graph.shortestPath();
     graph.minimumSpanningTree();
 
+    // menu
+    int choice = -1;
+    while (choice != 6) {
+        cout << "[1] Display water distribution network\n[2] Check contaminant spread (BFS)\n[3] Plan inspection route  (DFS)\n[4] Calculate shortest paths\n[5] Find Minimum Spanning Tree\n[0] Exit" << endl;
+    }
+
     return 0;
 }
