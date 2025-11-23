@@ -263,7 +263,7 @@ int main() {
         else if (choice == 4) {
             graph.shortestPath();
         }
-        else {
+        else if (choice == 5) {
             graph.minimumSpanningTree();
         }
     }
