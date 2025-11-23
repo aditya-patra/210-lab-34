@@ -238,19 +238,12 @@ int main() {
     // Creates graph
     Graph graph(edges);
 
-    // Prints adjacency list representation of graph 
-    graph.printGraph();
-    //driver program 
-    graph.DFS();
-    graph.BFS();
-    graph.shortestPath();
-    graph.minimumSpanningTree();
-
     // menu
     int choice = -1;
     while (choice != 6) {
         cout << "\nComputer Network Menu" << endl;
         cout << "[1] Display computer network\n[2] Estimate complexity of accessing each computer (BFS)\n[3] Find branches of isolated computer networks (DFS)\n[4] Calculate shortest path to computers\n[5] Find Minimum Spanning Tree\n[6] Exit " << endl;
+        cout << "Enter your choice" << endl;
         cin >> choice;
         if (choice == 1) {
             graph.printGraph();
