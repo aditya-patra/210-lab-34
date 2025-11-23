@@ -146,13 +146,13 @@ public:
                 cout << dist[i] << "\n";
         }
     }
-    
-    void minimumSpanningTree(int start) {
+
+    void minimumSpanningTree() {
         vector<bool> inMST(SIZE, false);
         vector<int> key(SIZE, INT_MAX);
         vector<int> parent(SIZE, -1);
 
-        key[start] = 0;
+        key[0] = 0;
 
         for (int count = 0; count < SIZE - 1; count++) {
 
@@ -192,7 +192,7 @@ public:
         // Print the MST edges and total cost
         // -----------------------------------------------------
         int totalWeight = 0;
-        cout << "\nMinimum Spanning Tree starting at " << start << ":\n";
+        cout << "\nMinimum Spanning Tree starting at 0:\n";
 
         for (int i = 0; i < SIZE; i++) {
             if (parent[i] != -1) {
@@ -237,6 +237,7 @@ int main() {
     graph.DFS();
     graph.BFS();
     graph.shortestPath();
+    graph.minimumSpanningTree();
 
     return 0;
 }
