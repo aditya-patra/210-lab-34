@@ -250,6 +250,22 @@ int main() {
     int choice = -1;
     while (choice != 6) {
         cout << "[1] Display computer network\n[2] Estimate complexity of accessing each computer (BFS)\n[3] Find branches of isolated computer networks (DFS)\n[4] Calculate shortest path to computers\n[5] Find Minimum Spanning Tree\n[6] Exit " << endl;
+        cin >> choice;
+        if (choice == 1) {
+            graph.printGraph();
+        }
+        else if (choice == 2) {
+            graph.DFS();
+        }
+        else if (choice == 3) {
+            graph.BFS();
+        }
+        else if (choice == 4) {
+            graph.shortestPath();
+        }
+        else {
+            graph.minimumSpanningTree();
+        }
     }
 
     return 0;
