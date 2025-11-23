@@ -146,59 +146,66 @@ public:
                 cout << dist[i] << "\n";
         }
     }
-
+    
     void minimumSpanningTree() {
-        vector<bool> inMST(SIZE, false);
-        vector<int> key(SIZE, INT_MAX);
-        vector<int> parent(SIZE, -1);
-
-        key[0] = 0;
-
-        for (int count = 0; count < SIZE - 1; count++) {
-
-            // -------------------------------------------------
-            // Pick the unvisited node with the smallest key
-            // -------------------------------------------------
-            int minKey = INT_MAX;
-            int u = -1;
-
-            for (int i = 0; i < SIZE; i++) {
-                if (!inMST[i] && key[i] < minKey) {
-                    minKey = key[i];
-                    u = i;
-                }
-            }
-
-            if (u == -1)
-                break; // no more nodes
-
-            inMST[u] = true;
-
-            // -------------------------------------------------
-            // Update neighbors
-            // -------------------------------------------------
-            for (int i = 0; i < adjList[u].size(); i++) {
-                int v = adjList[u][i].first;
-                int weight = adjList[u][i].second;
-
-                if (!inMST[v] && weight < key[v]) {
-                    key[v] = weight;
-                    parent[v] = u;
+        // Step 1: Collect all unique edges
+        vector<Edge> edges;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < adjList[i].size(); j++) {
+                int v = adjList[i][j].first;
+                int w = adjList[i][j].second;
+                if (i < v) {  // avoid duplicates in undirected graph
+                    Edge e;
+                    e.src = i;
+                    e.dest = v;
+                    e.weight = w;
+                    edges.push_back(e);
                 }
             }
         }
 
-        // -----------------------------------------------------
-        // Print the MST edges and total cost
-        // -----------------------------------------------------
-        int totalWeight = 0;
-        cout << "\nMinimum Spanning Tree starting at 0:\n";
+        // Step 2: Sort edges by weight (simple bubble sort)
+        for (int i = 0; i < edges.size() - 1; i++) {
+            for (int j = 0; j < edges.size() - i - 1; j++) {
+                if (edges[j].weight > edges[j + 1].weight) {
+                    Edge temp = edges[j];
+                    edges[j] = edges[j + 1];
+                    edges[j + 1] = temp;
+                }
+            }
+        }
 
-        for (int i = 0; i < SIZE; i++) {
-            if (parent[i] != -1) {
-                cout << parent[i] << " -- " << i
-                     << "   (weight = " << key[i] << ")\n";
-                totalWeight += key[i];
+        // Step 3: Initialize Union-Find structure
+        vector<int> parent(SIZE);
+        for (int i = 0; i < SIZE; i++)
+            parent[i] = i;
+
+        // Step 4: Kruskal’s algorithm
+        int totalWeight = 0;
+        cout << "\nMinimum Spanning Tree (Kruskal):\n";
+
+        for (int e = 0; e < edges.size(); e++) {
+            int u = edges[e].src;
+            int v = edges[e].dest;
+            int w = edges[e].weight;
+
+            // Find root of u
+            int rootU = u;
+            while (parent[rootU] != rootU)
+                rootU = parent[rootU];
+
+            // Find root of v
+            int rootV = v;
+            while (parent[rootV] != rootV)
+                rootV = parent[rootV];
+
+            // If adding the edge does NOT form a cycle
+            if (rootU != rootV) {
+                cout << u << " -- " << v << "  (weight = " << w << ")\n";
+                totalWeight += w;
+
+                // Union
+                parent[rootU] = rootV;
             }
         }
 
