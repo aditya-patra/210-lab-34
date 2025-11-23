@@ -182,7 +182,7 @@ public:
 
         // Step 4: Kruskal’s algorithm
         int totalWeight = 0;
-        cout << "\nMinimum Spanning Tree (Kruskal):\n";
+        cout << "\nMinimum Spanning Tree (based on shortest edges):\n";
 
         for (int e = 0; e < edges.size(); e++) {
             int u = edges[e].src;
