@@ -201,7 +201,7 @@ public:
 
             // If adding the edge does NOT form a cycle
             if (rootU != rootV) {
-                cout << u << " -- " << v << "  (weight = " << w << ")\n";
+                cout << "Connection from Computer " << u << " to Computer " << v << ", Latency: " << w << "\n";
                 totalWeight += w;
 
                 // Union
@@ -209,7 +209,7 @@ public:
             }
         }
 
-        cout << "Total MST Weight = " << totalWeight << "\n";
+        cout << "Total Latency across computer network = " << totalWeight << "\n";
     }
 
     // Print the graph's adjacency list
